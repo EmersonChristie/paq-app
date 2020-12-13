@@ -19,14 +19,9 @@ const setup = () => {
 };
 
 const signToken = (user) => {
-  console.log("secret", process.env.JWT_SECRET);
-  return (
-    jwt.sign({ data: user }),
-    process.env.JWT_SECRET,
-    {
-      expiresIn: 604800, // Expires in 7 days
-    }
-  );
+  return jwt.sign({ data: user }, process.env.JWT_SECRET, {
+    expiresIn: 604800, // Expires in 7 days
+  });
 };
 
 const hashPassword = async (password) => {

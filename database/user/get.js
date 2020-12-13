@@ -5,7 +5,7 @@ async function getUserById(id) {
 }
 
 async function getUserByEmail(email) {
-  return await (await UserModel.findOne({ email })).exec();
+  return await UserModel.findOne({ email }).exec();
 }
 
 module.exports = { getUserById, getUserByEmail };

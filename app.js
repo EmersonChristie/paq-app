@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const express = require("express");
 const app = express();
 
@@ -10,6 +8,8 @@ const passport = require("passport");
 const router = require("./router");
 const { initialiseAuth } = require("./auth");
 const { connectToDatabase } = require("./database/connection");
+
+require("dotenv").config();
 
 const dev = process.env.NODE_ENV !== "production";
 
@@ -27,6 +27,10 @@ initialiseAuth(app);
 connectToDatabase()
   .then(() => {
     console.log("connected");
+
+    app.get("/", (req, res) => {
+      res.send("Emersons App is Working");
+    });
 
     app.listen(port, () => {
       console.log(`PAQ app listening at http://localhost:${port}`);

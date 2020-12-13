@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
+
   const [err, user] = await to(getUserByEmail(email));
 
   const authenticationError = () => {
@@ -47,7 +48,6 @@ router.post("/login", async (req, res) => {
 
 router.post("/register", async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-  console.log("firstname: ", firstName);
   // validate email
   if (!/\b\w+\@\w+\.\w+(?:\.\w+)?\b/.test(email)) {
     return res
