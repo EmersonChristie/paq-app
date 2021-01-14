@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/custom-theme.scss";
+// import "./styles/custom-theme.scss";
+import "./styles/_variables.scss";
+import "./styles/_bootswatch.scss";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

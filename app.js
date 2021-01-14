@@ -21,6 +21,16 @@ app.use(cookieParser());
 
 app.use(passport.initialize());
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  console.log(`Request: ${req.method} ${req.url}`);
+  next();
+});
+
 router(app);
 initialiseAuth(app);
 

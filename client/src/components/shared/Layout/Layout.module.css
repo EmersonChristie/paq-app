@@ -1,0 +1,16 @@
+.layout {
+  height: 100%;
+}
+
+.navContainer {
+  background-color: red;
+}
+
+.body {
+  background-color: blue;
+  height: 100%;
+}
+
+.footerContainer {
+  background-color: darkmagenta;
+}
