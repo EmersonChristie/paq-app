@@ -1,19 +1,29 @@
-import { useState, useMemo } from "react";
-import login from "../routes/auth.routes";
+import { useEffect, useState, useMemo } from "react";
+import request from "../request";
 
 const useApiFetch = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 
-  const execute = async (request, data, options = {}) => {
+  const execute = async (slug, options = {}) => {
     try {
       setIsLoading(true);
-      const result = await request(data, options); // request is the function holding the request
+      const result = await request(slug, options);
+      console.log(
+        "🚀 ~ file: useApiFetch.js ~ line 13 ~ execute ~ result",
+        result
+      );
+
       // const result = await useMemo(
       //   (data, options) => request(data, options),
       //   []
       // );
+      if (!result.success) {
+        setError(result.data);
+        setIsLoading(false);
+        return result;
+      }
       setData(result);
       return result;
     } catch (e) {

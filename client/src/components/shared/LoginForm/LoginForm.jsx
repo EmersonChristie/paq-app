@@ -6,10 +6,8 @@ import { FormLabel, FormInput } from "../partials";
 
 import login from "../../../api/routes/auth.routes";
 import useApiFetch from "../../../api/hooks/useApiFetch";
-import useLogin from "../../../api/hooks/useLogin";
 
 export default function LoginForm() {
-  // const { login, isLoading, error, data, execute = () => {} } = useLogin();
   const { isLoading, error, data, execute } = useApiFetch();
 
   const handleOnSubmit = async (event) => {
@@ -19,15 +17,14 @@ export default function LoginForm() {
       email: "emersonchristie86@gmail.com",
       password: "password",
     };
-    try {
-      const response = await execute(login, payload);
-      console.log(
-        "🚀 ~ file: LoginForm.jsx ~ line 18 ~ handleOnSubmit ~ response",
-        response
-      );
+    const slug = "/auth/login";
+    const options = {
+      method: "POST",
+      body: JSON.stringify(payload),
+    };
 
-      // response = response from the API call
-      // redirect if needed using the `response` or do anything
+    try {
+      const response = await execute(slug, options);
     } catch (e) {
       console.log(e);
     }
