@@ -7,8 +7,8 @@ const request = async (slug, options) => {
       headers: new Headers({
         "Content-Type": "application/json",
       }),
-      // credentials: "same-origin",
-      withCredentials: true,
+      credentials: "include",
+      // withCredentials: true,
     });
 
     return await response.json();
